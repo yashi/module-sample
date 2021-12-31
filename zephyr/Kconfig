@@ -5,3 +5,8 @@ config LIBSAMPLE
 	bool "Enable libsample"
 	help
 	  This option enables the libsample as a Zephyr module.
+
+config APP_LINK_WITH_SAMPLE
+	bool "Make libsample header file available to application"
+	default y
+	depends on LIBSAMPLE
