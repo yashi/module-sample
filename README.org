@@ -32,11 +32,11 @@ document]] first.
 
 * Build as Zephyr module
 
-  At first, you should make libsample bulid by the Zephyr's build
-  system.  You need to tell libsample to the build system as a module,
+  At first, you should make libsample bulidable by the Zephyr's build
+  system.  You need to tell the build system libsample as a module,
   and tell how to build it.
 
-  This allows us to test the library is buildable with your target
+  This allows us to test building the library with your target
   compilers.
 
 ** Add as a module
