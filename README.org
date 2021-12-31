@@ -28,11 +28,14 @@ document]] first.
 
   - We use the [[https://docs.zephyrproject.org/latest/guides/west/workspaces.html#t2-star-topology-application-is-the-manifest-repository][T2 Start topology for our application]].
 
-* Header only library
+* Build as Zephyr module
 
-A header only library is a rare but does exist. In order to use the
-header file, you have to tell the build system where to look for the
-header file.
+  At first, you should make libsample bulid by the Zephyr's build
+  system.  You need to tell libsample to the build system as a module,
+  and tell how to build it.
+
+  This allows us to test the library is buildable with your target
+  compilers.
 
 ** Add as a module
 
