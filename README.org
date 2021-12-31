@@ -26,10 +26,39 @@ document]] first.
     must have a working CMake build script.  If code is based on Meson,
     GNU Make, or any other build system, you must first port to CMake.
 
+  - We use the [[https://docs.zephyrproject.org/latest/guides/west/workspaces.html#t2-star-topology-application-is-the-manifest-repository][T2 Start topology for our application]].
+
 * Header only library
 
-A header only library is a rare but does exist. You have to tell the
-build system where to look for the header file.
+A header only library is a rare but does exist. In order to use the
+header file, you have to tell the build system where to look for the
+header file.
+
+** Add as a module
+
+To do so, you must add an entry about the library in the application's
+=west.yml=.
+
+#+begin_src yaml
+  - name: module-sample
+    url: https://github.com/yashi/module-sample
+    revision: main
+    path: modules/lib/sample
+#+end_src
+
+With this entry, West can now list module-sample as a module.  You can
+check it with =west list=.
+
+#+begin_example
+  $ west list
+  manifest     module-app                   HEAD                                     N/A
+  zephyr       zephyr                       main                                     https://github.com/zephyrproject-rtos/zephyr
+  cmsis        modules/hal/cmsis            b0612c97c1401feeb4160add6462c3627fe90fc7 https://github.com/zephyrproject-rtos/cmsis
+  module-sample modules/lib/sample           main                                     https://github.com/yashi/module-sample
+#+end_example
+
+West now recognize it as a module but it doesn't build it at all
+because it's not told to do so.
 
 * ToDo
 
