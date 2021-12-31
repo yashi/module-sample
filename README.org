@@ -12,6 +12,8 @@ document]] first.
   - This repository have a sample library, libsample, which we want to
     integrate to Zephyr as a module.
 
+  - An application using this sample is in [[https://github.com/yashi/module-app][a separate repository]].
+
   - libsample has two functions
     - sample_pure() does not use any Zephyr facility at all.  It does
       its own calculation and return. If this is the case for all
