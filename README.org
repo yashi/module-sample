@@ -151,7 +151,46 @@ build your app with =-DCONFIG_LIBSAMPLE=y=, or you can control it with
   CONFIG_LIBSAMPLE=y
 #+end_src
 
+** Build it with your target compilers
 
+   Now we can test buliding libsample with your target board and
+   target compilers.  We'll use =qemu_cortex_m3= and =native_posix_64=
+   as examples, but you should make sure your library is built by your
+   configuraiton.
+
+   To see how the library is built, you should use =-v= option to
+   =west= command.
+
+   #+begin_example
+     $ west -v build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
+       :
+     [2/135] ccache /home/yashi/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc  -I/home/yashi/src/module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c /home/yashi/src/module-workspace/modules/lib/sample/src/plain.c
+     [3/135] : && ccache /usr/bin/cmake -E rm -f modules/sample/build/libsample.a && ccache /home/yashi/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc modules/sample/build/libsample.a  modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj && ccache /home/yashi/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib modules/sample/build/libsample.a && :
+   #+end_example
+
+   #+begin_example
+     $ west -v build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
+     [1/97] ccache /usr/lib/ccache/gcc  -I/home/yashi/src/module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c /home/yashi/src/module-workspace/modules/lib/sample/src/plain.c
+     [2/97] cd /home/yashi/src/module-workspace/build/zephyr && /usr/bin/cmake -E echo
+
+     [3/97] : && ccache /usr/bin/cmake -E rm -f modules/sample/build/libsample.a && ccache /usr/bin/ar qc modules/sample/build/libsample.a  modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj && ccache /usr/bin/ranlib modules/sample/build/libsample.a && :
+
+   #+end_example
+
+   An experienced user might notice that the built timing is way too
+   early, before the essential builds in the build system.  This will
+   be a problem if your library depends on Zephyr proper.  We'll cover
+   that later.
+
+   Make sure your library is built with compiler options you want to
+   use.  You should also make sure that your library is _not_ using
+   any compiler options and flags a Zephyr application would normally
+   built with.  This is because we haven't tell to do so.  If your
+   library doesn't depend on Zephyr, you don't need any compiler
+   option from Zephyr.  If it uses and depends on Zephyr, that is your
+   library uses Zephyr semaphore or logging subsystem, you must tell
+   additional flags while building your library.  We'll cover this
+   later.
 
 * ToDo
 
