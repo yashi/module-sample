@@ -1,0 +1,7 @@
+# Copyright (c) 2022 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config LIBSAMPLE
+	bool "Enable libsample"
+	help
+	  This option enables the libsample as a Zephyr module.

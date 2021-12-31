@@ -90,6 +90,47 @@ This tells
 	specified.
     #+end_example
 
+With this line, you see that libsample is built when you build your
+application.  You see the build steps increase.
+
+#+begin_example
+  $ west build -b native_posix_64 module-app
+    :
+  [95/95] Linking C executable zephyr/zephyr.elf
+#+end_example
+
+#+begin_example
+  $ west build -b native_posix_64 module-app
+    :
+  [97/97] Linking C executable zephyr/zephyr.elf
+#+end_example
+
+** Conditional compilation whth Kconfig
+
+It does build it but we are not using it at all.  Plus, we want to
+control when to build libsample or not just like any other features in
+Zephyr eco system.
+
+It's the same as the Zephyr proper.  We'll use =if(CONFIG_LIBSAMPLE)=
+and =Kconfig= constructs.
+
+#+begin_src cmake
+  if(CONFIG_LIBSAMPLE)
+    add_subdirectory(.. build)
+  endif()
+#+end_src
+
+#+begin_src kconfig
+  config LIBSAMPLE
+	  bool "Enable libsample"
+	  help
+	    This option enables the libsample as a Zephyr module.
+#+end_src
+
+With these changes, libsample will show up in the menuconfig and we
+can control it with =prj.conf= as usual.
+
+
 * ToDo
 
  - [ ] Support autoconf.h
