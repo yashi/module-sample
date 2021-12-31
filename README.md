@@ -27,6 +27,11 @@ first.
    must have a working CMake build script.  If code is based on Meson,
    GNU Make, or any other build system, you must first port to CMake.
 
+# Header only library
+
+A header only library is a rare but does exist. You have to tell the
+build system where to look for the header file.
+
 # ToDo
 
  - [ ] Support autoconf.h
