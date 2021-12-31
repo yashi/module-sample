@@ -130,8 +130,27 @@ and =Kconfig= constructs.
 	    This option enables the libsample as a Zephyr module.
 #+end_src
 
-With these changes, libsample will show up in the menuconfig and we
-can control it with =prj.conf= as usual.
+With these changes, libsample will show up in the menuconfig, you can
+build your app with =-DCONFIG_LIBSAMPLE=y=, or you can control it with
+=prj.conf= as usual.
+
+#+begin_example
+  Modules  --->
+
+    ,*** Available modules. ***
+    sample (/home/yashi/src/module-workspace/modules/lib/sample)  --->
+
+      [ ] Enable libsample
+#+end_example
+
+#+begin_example
+  $ west build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
+#+end_example
+
+#+begin_src conf
+  CONFIG_LIBSAMPLE=y
+#+end_src
+
 
 
 * ToDo
