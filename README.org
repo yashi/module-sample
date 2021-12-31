@@ -60,6 +60,36 @@ check it with =west list=.
 West now recognize it as a module but it doesn't build it at all
 because it's not told to do so.
 
+Zephyr's build system will load module's =CMakeLists.txt=, which is
+=zephyr/CMakeLists.txt= as the default.  You can change the location
+of the file.  We'll talk about it later.
+
+** Tell the build system to build
+
+If you just want to _bulid_ the library, add the following like in the
+=zephyr/CMakeLists.txt=.
+
+#+begin_src cmake
+  add_subdirectory(.. build)
+#+end_src
+
+This tells
+
+  - Add the the library's root directory (because we are in =zephyr/=
+    directory) as a sub directory to build.
+  - Because =..= is not a sub directory of the current directory
+    =zephyr/=, CMake will complain if you omit the second binary
+    directory parameter.  So this must be set.  The name of the binary
+    directory can be of your choise.
+    #+begin_example
+      CMake Error at .../module-workspace/modules/lib/sample/zephyr/CMakeLists.txt:1 (add_subdirectory):
+	add_subdirectory not given a binary directory but the given source
+	directory ".../module-workspace/modules/lib/sample" is not a
+	subdirectory of	".../module-workspace/modules/lib/sample/zephyr".  When
+	specifying an out-of-tree source a binary directory must be explicitly
+	specified.
+    #+end_example
+
 * ToDo
 
  - [ ] Support autoconf.h
