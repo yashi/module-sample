@@ -140,12 +140,9 @@ application.  You see the number of the build steps increased.
 
 ** Conditional compilation whth Kconfig
 
-It does build it but we are not using it at all.  Plus, we want to
-control when to build libsample or not just like any other features in
-Zephyr eco system.
-
-It's the same as the Zephyr proper.  We'll use =if(CONFIG_LIBSAMPLE)=
-and =Kconfig= constructs.
+We just built libsample using the Zephyr build system but we want to
+control when to build it or not just like any other features in Zephyr.
+To do so, we'll use =if(CONFIG_LIBSAMPLE)= and =Kconfig= constructs.
 
 #+begin_src cmake
   if(CONFIG_LIBSAMPLE)
@@ -161,7 +158,7 @@ and =Kconfig= constructs.
 #+end_src
 
 With these changes, libsample will show up in the menuconfig, you can
-build your app with =-DCONFIG_LIBSAMPLE=y=, or you can control it with
+build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
 =prj.conf= as usual.
 
 #+begin_example
