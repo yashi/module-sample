@@ -93,8 +93,12 @@ West now recognize it as a module but it doesn't build it at all
 because it's not told to do so.
 
 Zephyr's build system will load module's =CMakeLists.txt=, which is
-=zephyr/CMakeLists.txt= as the default.  You can change the location
-of the file.  We'll talk about it later.
+=zephyr/CMakeLists.txt= as the default.  Please note that the build
+system will search for =zephyr/= directroy in a module directory.  This
+is a fixed location and hard coded in =zephyr/scripts/zephyr_module.py=.
+
+You can, on the other hand, change the location of the
+=zephyr/CMakeLists.txt=.  We'll talk about this in a later section.
 
 ** Tell the build system to build
 
@@ -143,6 +147,10 @@ application.  You see the number of the build steps increased.
 We just built libsample using the Zephyr build system but we want to
 control when to build it or not just like any other features in Zephyr.
 To do so, we'll use =if(CONFIG_LIBSAMPLE)= and =Kconfig= constructs.
+
+The default location of =Kconfig= is =zephyr/Kconfig= under a module
+directory.  You can change the location of =Kconfig= as well as
+=CMakeLists.txt=. This will be discussed in the later section.
 
 #+begin_src cmake
   if(CONFIG_LIBSAMPLE)
