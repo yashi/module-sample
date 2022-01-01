@@ -173,7 +173,7 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
   Modules  --->
 
     ,*** Available modules. ***
-    sample (/home/yashi/src/module-workspace/modules/lib/sample)  --->
+    sample (.../module-workspace/modules/lib/sample)  --->
 
       [ ] Enable libsample
 #+end_example
@@ -199,14 +199,14 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
    #+begin_example
      $ west -v build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
        :
-     [2/135] ccache /home/yashi/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc  -I/home/yashi/src/module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c /home/yashi/src/module-workspace/modules/lib/sample/src/plain.c
-     [3/135] : && ccache /usr/bin/cmake -E rm -f modules/sample/build/libsample.a && ccache /home/yashi/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc modules/sample/build/libsample.a  modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj && ccache /home/yashi/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib modules/sample/build/libsample.a && :
+     [2/135] ccache .../zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc  -I.../module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c .../module-workspace/modules/lib/sample/src/plain.c
+     [3/135] : && ccache /usr/bin/cmake -E rm -f modules/sample/build/libsample.a && ccache .../zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc modules/sample/build/libsample.a  modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj && ccache .../zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib modules/sample/build/libsample.a && :
    #+end_example
 
    #+begin_example
      $ west -v build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
-     [1/97] ccache /usr/lib/ccache/gcc  -I/home/yashi/src/module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c /home/yashi/src/module-workspace/modules/lib/sample/src/plain.c
-     [2/97] cd /home/yashi/src/module-workspace/build/zephyr && /usr/bin/cmake -E echo
+     [1/97] ccache /usr/lib/ccache/gcc  -I.../module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c .../module-workspace/modules/lib/sample/src/plain.c
+     [2/97] cd .../module-workspace/build/zephyr && /usr/bin/cmake -E echo
 
      [3/97] : && ccache /usr/bin/cmake -E rm -f modules/sample/build/libsample.a && ccache /usr/bin/ar qc modules/sample/build/libsample.a  modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj && ccache /usr/bin/ranlib modules/sample/build/libsample.a && :
 
