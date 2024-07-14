@@ -40,33 +40,6 @@ document]] first.
     ninja -C builddir
   #+end_example
 
-* Setup West workspace
-
-  As noted, we are using T2 star topology.  Run the following commands
-  to setup a workspace.  This assume you have [[https://pipenv.pypa.io/en/latest/][Pipenv]].
-
-  #+begin_example
-    mkdir module-workspace
-    cd module-workspace
-    pipenv shell
-    pip3 install west
-    west init -m https://github.com/yashi/module-app
-    west update --narrow
-    pip3 install -r zephyr/scripts/requirements-base.txt
-  #+end_example
-
-  Once this is done, you can test build the application with the
-  following command:
-
-  #+begin_example
-    west build -b native_posix_64 module-app -t run
-  #+end_example
-
-  You need to =C-c= to kill the application.
-
-  If you don't know about West workspace, please read the [[https://docs.zephyrproject.org/latest/guides/west/basics.html][Basic]] and the
-  [[https://docs.zephyrproject.org/latest/guides/west/workspaces.html][Workspaces]].
-
 * Build as Zephyr module
 
   At first, you should make libsample bulidable by the Zephyr's build
@@ -75,6 +48,33 @@ document]] first.
 
   This allows us to test building the library with your target
   compilers.
+
+** Setup West workspace
+
+   As noted, we are using T2 star topology.  Run the following commands
+   to setup a workspace.  This assume you have [[https://pipenv.pypa.io/en/latest/][Pipenv]].
+
+   #+begin_example
+     mkdir module-workspace
+     cd module-workspace
+     pipenv shell
+     pip3 install west
+     west init -m https://github.com/yashi/module-app
+     west update --narrow
+     pip3 install -r zephyr/scripts/requirements-base.txt
+   #+end_example
+
+   Once this is done, you can test build the application with the
+   following command:
+
+   #+begin_example
+     west build -b native_posix_64 module-app -t run
+   #+end_example
+
+   You need to =C-c= to kill the application.
+
+   If you don't know about West workspace, please read the [[https://docs.zephyrproject.org/latest/guides/west/basics.html][Basic]] and the
+   [[https://docs.zephyrproject.org/latest/guides/west/workspaces.html][Workspaces]].
 
 ** Add as a module
 
