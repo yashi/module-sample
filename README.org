@@ -273,9 +273,9 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
 
 ** zephyr_interface
 
-   One way to do so is to use =zephyr_interface=, a target Zephyr's
-   build system has. This target collects all compiler options the
-   build system needs.
+   One way to do so is to use =zephyr_interface=, which is a target
+   Zephyr's build system has. This target collects all compiler
+   options the build system needs.
 
    #+begin_quote
    "zephyr_interface" is a source-less library that encapsulates all
@@ -299,9 +299,8 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
      -I.../module-workspace/modules/lib/sample/zephyr/../include
    #+end_example
 
-   This is needed if Zephyr proper depends on your library, such as
-   CMSIS module because Zephyr will includes its header and link
-   against it.  But that's not our case.
+   This is needed only if Zephyr proper depends on a library, such as
+   the CMSIS module. However, that is not our case.
 
 ** ZEPHYR_INTERFACE_LIBS
 
