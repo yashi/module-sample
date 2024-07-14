@@ -40,7 +40,7 @@ document]] first.
     ninja -C builddir
   #+end_example
 
-* Build as Zephyr module
+* Build as a Zephyr module
 
   At first, you should make libsample bulidable by the Zephyr's build
   system.  You need to tell the build system libsample as a module,
