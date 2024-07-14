@@ -152,7 +152,7 @@ application.  You see the number of the build steps increased.
   [97/97] Linking C executable zephyr/zephyr.elf
 #+end_example
 
-** Conditional compilation whth Kconfig
+** Conditional compilation with Kconfig
 
 We just built libsample using the Zephyr build system but we want to
 control when to build it or not just like any other features in Zephyr.
