@@ -1,15 +1,15 @@
 * Zephyr Module example and template
 
-This is a sample and template code for Zephyr's module system.  This
-repository's aim is to support developers who want to integrate an
+This is sample and template code for Zephyr's module system.  This
+repository aims to support developers who want to integrate an
 existing code as a Zephyr module.
 
-For anyone want to work with Zephyr modules, please read [[https://docs.zephyrproject.org/latest/guides/modules.html][the official
-document]] first.
+For anyone wanting to work with Zephyr modules, please read [[https://docs.zephyrproject.org/latest/guides/modules.html][the
+official document]] first.
 
 * Given
 
-  - This repository have a sample library, libsample, which we want to
+  - This repository has a sample library, libsample, which we want to
     integrate to Zephyr as a module.
 
   - An application using this sample is in [[https://github.com/yashi/module-app][a separate repository]].
@@ -21,12 +21,12 @@ document]] first.
     - sample_zephyr() uses Zephyr facility and you need to take care a
       few more bits.
 
-  - libsample is bulidable for both Linux and Zephyr and we want to
+  - libsample is buildable for both Linux and Zephyr and we want to
     target both native_sim and qemu_cortex_m3.
 
   - The build system for this repository is CMake.  A Zephyr module
     must have a working CMake build script.  If code is based on Meson,
-    GNU Make, or any other build system, you must first port to CMake.
+    GNU Make, or any other build system, you must first port it to CMake.
 
   - We use the [[https://docs.zephyrproject.org/latest/guides/west/workspaces.html#t2-star-topology-application-is-the-manifest-repository][T2 Star topology]] for our workspace.
 
@@ -42,7 +42,7 @@ document]] first.
 
 * Build as a Zephyr module
 
-  At first, you should make libsample bulidable by the Zephyr's build
+  At first, you should make libsample buildable by the Zephyr's build
   system.  You need to tell the build system libsample as a module,
   and tell how to build it.
 
@@ -373,9 +373,9 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
        )
    #+end_src
 
-   This also explain why the name of the option is =APP_LINK_WITH_SAMPLE=.
+   This also explains why the name of the option is =APP_LINK_WITH_SAMPLE=.
 
-   You might ask "We are talking about include directories, why does it use
+   You might ask, "We are talking about include directories, why does it use
    =target_link_libraries_ifdef=, which uses [[https://cmake.org/cmake/help/latest/command/target_link_libraries.html][=target_link_libraries=]], instead
    of =target_include_directories_ifdef= or [[https://cmake.org/cmake/help/latest/command/target_include_directories.html][=target_include_directories=]]?"
    With CMake, if a library already knows include directories for
