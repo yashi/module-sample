@@ -22,7 +22,7 @@ document]] first.
       few more bits.
 
   - libsample is bulidable for both Linux and Zephyr and we want to
-    target both native_posix and qemu_cortex_m3.
+    target both native_sim and qemu_cortex_m3.
 
   - The build system for this repository is CMake.  A Zephyr module
     must have a working CMake build script.  If code is based on Meson,
@@ -68,7 +68,7 @@ document]] first.
    following command:
 
    #+begin_example
-     west build -b native_posix_64 module-app -t run
+     west build -b native_sim/native/64 module-app -t run
    #+end_example
 
    You need to =C-c= to kill the application.
@@ -141,13 +141,13 @@ With this line, you see that libsample is built when you build your
 application.  You see the number of the build steps increased.
 
 #+begin_example
-  $ west build -b native_posix_64 module-app
+  $ west build -b native_sim/native/64 module-app
     :
   [95/95] Linking C executable zephyr/zephyr.elf
 #+end_example
 
 #+begin_example
-  $ west build -b native_posix_64 module-app
+  $ west build -b native_sim/native/64 module-app
     :
   [97/97] Linking C executable zephyr/zephyr.elf
 #+end_example
@@ -189,7 +189,7 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
 #+end_example
 
 #+begin_example
-  $ west build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
+  $ west build -b native_sim/native/64 module-app -- -DCONFIG_LIBSAMPLE=y
 #+end_example
 
 #+begin_src conf
@@ -199,7 +199,7 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
 ** Build it with your target compilers
 
    Now we can test buliding libsample with your target board and
-   target compilers.  We'll use =qemu_cortex_m3= and =native_posix_64=
+   target compilers.  We'll use =qemu_cortex_m3= and =native_sim/native/64=
    as examples, but you should make sure your library is built by your
    configuraiton.
 
@@ -207,14 +207,14 @@ build it with =-DCONFIG_LIBSAMPLE=y=, or you can control the build with
    =west= command.
 
    #+begin_example
-     $ west -v build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
+     $ west -v build -b native_sim/native/64 module-app -- -DCONFIG_LIBSAMPLE=y
        :
      [2/135] ccache .../zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc  -I.../module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c .../module-workspace/modules/lib/sample/src/plain.c
      [3/135] : && ccache /usr/bin/cmake -E rm -f modules/sample/build/libsample.a && ccache .../zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar qc modules/sample/build/libsample.a  modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj && ccache .../zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib modules/sample/build/libsample.a && :
    #+end_example
 
    #+begin_example
-     $ west -v build -b native_posix_64 module-app -- -DCONFIG_LIBSAMPLE=y
+     $ west -v build -b native_sim/native/64 module-app -- -DCONFIG_LIBSAMPLE=y
      [1/97] ccache /usr/lib/ccache/gcc  -I.../module-workspace/modules/lib/sample/include -Wall -Wextra -std=gnu11 -MD -MT modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -MF modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj.d -o modules/sample/build/CMakeFiles/sample.dir/src/plain.c.obj -c .../module-workspace/modules/lib/sample/src/plain.c
      [2/97] cd .../module-workspace/build/zephyr && /usr/bin/cmake -E echo
 
