@@ -30,6 +30,16 @@ document]] first.
 
   - We use the [[https://docs.zephyrproject.org/latest/guides/west/workspaces.html#t2-star-topology-application-is-the-manifest-repository][T2 Star topology]] for our workspace.
 
+* Build as a library on Linux
+  Since it's a very simple library, building it for Linux is easy:
+
+  #+begin_example
+    git clone https://github.com/yashi/module-sample
+    cd module-sample
+    make -B builddir -G Ninja
+    ninja -C builddir
+  #+end_example
+
 * Setup West workspace
 
   As noted, we are using T2 star topology.  Run the following commands
